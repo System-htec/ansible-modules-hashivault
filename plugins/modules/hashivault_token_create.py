@@ -121,6 +121,10 @@ def hashivault_token_create(params):
     period = params.get('period')
     explicit_max_ttl = params.get('explicit_max_ttl')
 
+    # hotfix to enable metadata for token add
+    metadata=metadata.replace("'", '"')
+    metadata=json.loads(metadata)
+    
     token = client.create_token(
         role=role,
         token_id=token_id,
